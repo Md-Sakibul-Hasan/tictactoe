@@ -415,12 +415,13 @@ class _MyModuleAppState extends State<MyModuleApp> {
 
 
     return WillPopScope(
-      onWillPop: () async {
-        log("WillPopScope");
-       GoRouter.of(context).pop();
-        log("popped");
-       return Future.value(false);
-      },
+      // onWillPop: () async {
+      //   log("WillPopScope");
+      //  GoRouter.of(context).pop();
+      //   log("popped");
+      //  return Future.value(true);
+      // },
+      onWillPop: () { return Future.value(true); },
       child: AppLifecycleObserver(
         child: MultiProvider(
           providers: [

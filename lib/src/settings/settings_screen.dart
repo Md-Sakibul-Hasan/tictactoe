@@ -95,10 +95,10 @@ class SettingsScreen extends StatelessWidget {
                 );
               },
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 8),
-              child: Text('Music by Md Sakibul Hasan, used with permission.'),
-            ),
+            // const Padding(
+            //   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 8),
+            //   child: Text('Music by Md Sakibul Hasan, used with permission.'),
+            // ),
             _gap,
           ],
         ),

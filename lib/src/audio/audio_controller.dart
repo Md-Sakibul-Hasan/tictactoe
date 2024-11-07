@@ -106,7 +106,7 @@ class AudioController {
     // to be more selective when preloading.
     await AudioCache.instance.loadAll(SfxType.values
         .expand(soundTypeToFilename)
-        .map((path) => 'sfx/$path')
+        .map((path) => 'games/tic_tac_toe/sfx/$path')
         .toList());
   }
 
@@ -134,7 +134,7 @@ class AudioController {
     _log.info(() => '- Chosen filename: $filename');
 
     final currentPlayer = _sfxPlayers[_currentSfxPlayer];
-    currentPlayer.play(AssetSource('sfx/$filename'),
+    currentPlayer.play(AssetSource('games/tic_tac_toe/sfx/$filename'),
         volume: soundTypeToVolume(type));
     _currentSfxPlayer = (_currentSfxPlayer + 1) % _sfxPlayers.length;
   }
@@ -191,7 +191,7 @@ class AudioController {
 
   Future<void> _playFirstSongInPlaylist() async {
     _log.info(() => 'Playing ${_playlist.first} now.');
-    await _musicPlayer.play(AssetSource('music/${_playlist.first.filename}'));
+    await _musicPlayer.play(AssetSource('games/tic_tac_toe/music/${_playlist.first.filename}'));
   }
 
   Future<void> _resumeMusic() async {
