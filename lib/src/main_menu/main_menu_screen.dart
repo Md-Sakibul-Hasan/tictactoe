@@ -85,7 +85,11 @@ class MainMenuScreen extends StatelessWidget {
                 child: const Text('Settings'),
               ),
             ),
-
+            InkWell(
+              onTap: (){
+                GoRouter.of(context).pop();
+              },
+                child: Text('Quit')),
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: ValueListenableBuilder<bool>(

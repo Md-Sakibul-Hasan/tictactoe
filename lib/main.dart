@@ -416,26 +416,10 @@ class _MyModuleAppState extends State<MyModuleApp> {
 
     return WillPopScope(
       onWillPop: () async {
-        log('on will pop');
-        final currentRouteName = GoRouter.of(context)
-            .routerDelegate
-            .currentConfiguration
-            .isNotEmpty
-            ? GoRouter.of(context)
-            .routerDelegate
-            .currentConfiguration.last.matchedLocation
-            : '';
-        log('currentRouteName $currentRouteName');
-        final isMainPage = currentRouteName == 'main';
-        // final isMainPage = GoRouter.of(context).routeInformationParser == '/';
-
-        if (isMainPage) {
-          log('if $isMainPage');
-          return true;
-        } else {
-          log('else $isMainPage');
-          return false;
-        }
+        log("WillPopScope");
+       GoRouter.of(context).pop();
+        log("popped");
+       return Future.value(false);
       },
       child: AppLifecycleObserver(
         child: MultiProvider(
