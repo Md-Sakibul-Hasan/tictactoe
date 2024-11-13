@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -55,6 +57,7 @@ class SettingsScreen extends StatelessWidget {
                 onSelected: () => settings.toggleMusicOn(),
               ),
             ),
+
             ///remove ads portions
             // Consumer<InAppPurchaseController?>(
             //     builder: (context, inAppPurchase, child) {
@@ -90,8 +93,7 @@ class SettingsScreen extends StatelessWidget {
                 final messenger = ScaffoldMessenger.of(context);
                 messenger.clearSnackBars();
                 messenger.showSnackBar(
-                  const SnackBar(
-                      content: Text('Player progress has been reset.')),
+                  const SnackBar(content: Text('Player progress has been reset.')),
                 );
               },
             ),

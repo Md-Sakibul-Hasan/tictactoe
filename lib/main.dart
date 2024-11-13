@@ -415,13 +415,14 @@ class _MyModuleAppState extends State<MyModuleApp> {
 
 
     return WillPopScope(
-      // onWillPop: () async {
-      //   log("WillPopScope");
-      //  GoRouter.of(context).pop();
-      //   log("popped");
-      //  return Future.value(true);
-      // },
-      onWillPop: () { return Future.value(true); },
+      onWillPop: () async {
+        if (navigatorKey!.currentState!.canPop()) {
+          navigatorKey!.currentState!.pop();
+          return false;
+        } else {
+          return true;
+        }
+      },
       child: AppLifecycleObserver(
         child: MultiProvider(
           providers: [
@@ -461,7 +462,7 @@ class _MyModuleAppState extends State<MyModuleApp> {
           ],
           child: Builder(builder: (context) {
             final palette = context.watch<Palette>();
-      
+
             return MaterialApp.router(
               title: 'Tic Tac Toe',
               debugShowCheckedModeBanner: false,
