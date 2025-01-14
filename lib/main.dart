@@ -315,12 +315,12 @@ class MyModuleApp extends StatefulWidget {
   final GamesServicesController? gamesServicesController;
   final InAppPurchaseController? inAppPurchaseController;
   // final AdsController? adsController;
-
+  final String? userId;
   const MyModuleApp({
     required this.playerProgressPersistence,
     required this.settingsPersistence,
     required this.inAppPurchaseController,
-
+     this.userId,
     this.gamesServicesController,
     super.key,
   });
@@ -386,7 +386,7 @@ class _MyModuleAppState extends State<MyModuleApp> {
                         return buildTransition<void>(
                           child: WinGameScreen(
                             score: score,
-                            key: const Key('win game'),
+                            key: const Key('win game'), userId: widget.userId!,
                           ),
                           color: context.watch<Palette>().backgroundPlaySession,
                           flipHorizontally: true,
@@ -413,7 +413,7 @@ class _MyModuleAppState extends State<MyModuleApp> {
   @override
   Widget build(BuildContext context) {
 
-
+ print("ebs user id =${widget.userId}");
     return WillPopScope(
       onWillPop: () async {
         if (navigatorKey!.currentState!.canPop()) {

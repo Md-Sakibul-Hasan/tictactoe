@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../../ebs/post_repository/ebs_post_repo.dart';
 import '../ads/ads_controller.dart';
 import '../ads/banner_ad_widget.dart';
 import '../games_services/score.dart';
@@ -10,14 +11,28 @@ import '../style/palette.dart';
 import '../style/responsive_screen.dart';
 import '../style/rough/button.dart';
 
-class WinGameScreen extends StatelessWidget {
+class WinGameScreen extends StatefulWidget {
   final Score score;
-
-  const WinGameScreen({
+  final String userId;
+   const WinGameScreen({
     super.key,
-    required this.score,
+    required this.score, required this.userId,
   });
 
+  @override
+  State<WinGameScreen> createState() => _WinGameScreenState();
+}
+
+class _WinGameScreenState extends State<WinGameScreen> {
+  @override
+  void dispose() {
+    print("tic tac toe dispose");
+    postScoreData();
+    super.dispose();
+  }
+  postScoreData()async{
+    await EbsPostRepo.postScoreData(gameScore: widget.score.score, userId: widget.userId);
+  }
   @override
   Widget build(BuildContext context) {
     // final adsControllerAvailable = context.watch<AdsController?>() != null;
@@ -50,8 +65,8 @@ class WinGameScreen extends StatelessWidget {
             gap,
             Center(
               child: Text(
-                'Score: ${score.score}\n'
-                'Time: ${score.formattedTime}',
+                'Score: ${widget.score.score}\n'
+                'Time: ${widget.score.formattedTime}',
                 style: const TextStyle(
                     fontFamily: 'Permanent Marker', fontSize: 20),
               ),
@@ -59,8 +74,9 @@ class WinGameScreen extends StatelessWidget {
           ],
         ),
         rectangularMenuArea: RoughButton(
-          onTap: () {
+          onTap: ()async {
             GoRouter.of(context).pop();
+           await EbsPostRepo.postScoreData(gameScore: widget.score.score, userId: widget.userId);
           },
           textColor: palette.ink,
           child: const Text('Continue'),
