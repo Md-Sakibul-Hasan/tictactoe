@@ -24,13 +24,15 @@ class WinGameScreen extends StatefulWidget {
 }
 
 class _WinGameScreenState extends State<WinGameScreen> {
+
   @override
-  void dispose() {
-    print("tic tac toe dispose");
+  void initState() {
+    // TODO: implement initState
+    super.initState();
     postScoreData();
-    super.dispose();
   }
   postScoreData()async{
+    print("post score from initstate");
     await EbsPostRepo.postScoreData(gameScore: widget.score.score, userId: widget.userId);
   }
   @override
@@ -74,9 +76,9 @@ class _WinGameScreenState extends State<WinGameScreen> {
           ],
         ),
         rectangularMenuArea: RoughButton(
-          onTap: ()async {
+          onTap: () {
             GoRouter.of(context).pop();
-           await EbsPostRepo.postScoreData(gameScore: widget.score.score, userId: widget.userId);
+          // await EbsPostRepo.postScoreData(gameScore: widget.score.score, userId: widget.userId);
           },
           textColor: palette.ink,
           child: const Text('Continue'),
