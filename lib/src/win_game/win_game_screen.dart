@@ -38,8 +38,8 @@ class _WinGameScreenState extends State<WinGameScreen> {
   @override
   Widget build(BuildContext context) {
     // final adsControllerAvailable = context.watch<AdsController?>() != null;
-    final adsRemoved =
-        context.watch<InAppPurchaseController?>()?.adRemoval.active ?? false;
+    // final adsRemoved =
+    //     context.watch<InAppPurchaseController?>()?.adRemoval.active ?? false;
     final palette = context.watch<Palette>();
 
     const gap = SizedBox(height: 10);

@@ -280,7 +280,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 // import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:in_app_purchase/in_app_purchase.dart';
+// import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import 'package:tictactoe/src/game_internals/board_setting.dart';
@@ -313,13 +313,13 @@ class MyModuleApp extends StatefulWidget {
   final PlayerProgressPersistence playerProgressPersistence;
   final SettingsPersistence settingsPersistence;
   final GamesServicesController? gamesServicesController;
-  final InAppPurchaseController? inAppPurchaseController;
+  // final InAppPurchaseController? inAppPurchaseController;
   // final AdsController? adsController;
   final String? userId;
   const MyModuleApp({
     required this.playerProgressPersistence,
     required this.settingsPersistence,
-    required this.inAppPurchaseController,
+    // required this.inAppPurchaseController,
      this.userId,
     this.gamesServicesController,
     super.key,
@@ -436,8 +436,8 @@ class _MyModuleAppState extends State<MyModuleApp> {
             Provider<GamesServicesController?>.value(
                 value: widget.gamesServicesController),
            // Provider<AdsController?>.value(value: widget.adsController),
-            ChangeNotifierProvider<InAppPurchaseController?>.value(
-                value: widget.inAppPurchaseController),
+           //  ChangeNotifierProvider<InAppPurchaseController?>.value(
+           //      value: widget.inAppPurchaseController),
             Provider<SettingsController>(
               lazy: false,
               create: (context) => SettingsController(
